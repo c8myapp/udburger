@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import ContainerChild from '../../hoc/ContainerChild';
+import Burger from '../../components/burger/Burger';
 
 export default class BurgerBuilder extends Component {
   render() {
 	return (
 	  <ContainerChild>
-		<div>Burger</div>
+		<Burger></Burger>
 		<div>Build Controls</div>
 	  </ContainerChild>
 		
