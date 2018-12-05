@@ -13,8 +13,8 @@ const Burger = props => {
       });
     })
     .reduce((arr, el) => {
-      console.log(arr);
-      console.log(el);
+      //console.log(arr);
+      //console.log(el);
       return arr.concat(el);
     }, []);
   if (transformedIngredients.length === 0) {
