@@ -3,7 +3,6 @@ import ContainerChild from "../../hoc/ContainerChild";
 import Burger from "../../components/burger/Burger";
 import BuildControls from "../../components/burger/buildControls/BuildControls";
 
-
 const INGREDIENT_PRICE = {
   salad: 0.5,
   cheese: 0.7,
@@ -19,9 +18,8 @@ export default class BurgerBuilder extends Component {
       cheese: 2,
       meat: 0
     },
-    totalPrice:1
+    totalPrice: 1
   };
-
 
   updateStatusPurchase = ingredients => {
     const sum = Object.keys(ingredients)
@@ -53,11 +51,9 @@ export default class BurgerBuilder extends Component {
     this.updateStatusPurchase(tmpIngredients);
   };
 
-  removeIngredientHandler= type=>
-  {
+  removeIngredientHandler = type => {
     const oldCount = this.state.ingredients[type];
-    if(oldCount<=0)
-    {
+    if (oldCount <= 0) {
       return;
     }
     const updateCount = oldCount - 1;
@@ -74,17 +70,22 @@ export default class BurgerBuilder extends Component {
     //update state
     this.setState({ totalPrice: updatePrice, ingredients: tmpIngredients });
     this.updateStatusPurchase(tmpIngredients);
-  }
+  };
 
   render() {
-
-
+    const disabledInfo = {
+      ...this.state.ingredients
+    };
+    for (let key in disabledInfo) {
+      disabledInfo[key] = disabledInfo[key] <= 0;
+    }
     return (
       <ContainerChild>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls ingredientAdd={this.addIngredientHandler}
-        ingredeintRemove = {this.removeIngredientHandler}
-        
+        <BuildControls
+          ingredientAdd={this.addIngredientHandler}
+          ingredeintRemove={this.removeIngredientHandler}
+          disabled={disabledInfo}
         />
       </ContainerChild>
     );
