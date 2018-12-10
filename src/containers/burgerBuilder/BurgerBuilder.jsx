@@ -18,7 +18,7 @@ export default class BurgerBuilder extends Component {
       cheese: 0,
       meat: 0
     },
-    totalPrice: 1
+    totalPrice: 0
   };
 
   updateStatusPurchase = ingredients => {
@@ -83,6 +83,7 @@ export default class BurgerBuilder extends Component {
       <ContainerChild>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
+          totalPrice={this.state.totalPrice}
           ingredientAdd={this.addIngredientHandler}
           ingredeintRemove={this.removeIngredientHandler}
           disabled={disabledInfo}
